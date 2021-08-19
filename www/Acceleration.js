@@ -19,7 +19,7 @@
  *
 */
 
-var Acceleration = function(x, y, z, x_uc, y_uc, z,_uc, x_la, y_la, z_la, x_rv, y_rv, z_rv, rv_cos, rv_eha, timestamp) {
+var Acceleration = function(x, y, z, x_uc, y_uc, z_uc, x_la, y_la, z_la, x_rv, y_rv, z_rv, rv_cos, rv_eha, timestamp) {
     this.x = x;
     this.y = y;
     this.z = z;
