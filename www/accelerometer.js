@@ -47,7 +47,7 @@ var eventTimerId = null;
 function start() {
     exec(function (a) {
         var tempListeners = listeners.slice(0);
-        accel = new Acceleration(a.x, a.y, a.z, a.x_uc, a.y_uc, a.z_uc, a.x_la, a.y_la, a.z_la, a.x_rv, a.y_rv, a.z_rv, a.rv_cos, a.rv_eha, a.timestamp);
+        accel = new Acceleration(a.x, a.y, a.z, a.x_uc, a.y_uc, a.z_uc, a.x_ucb, a.y_ucb, a.z_ucb, a.x_la, a.y_la, a.z_la, a.x_rv, a.y_rv, a.z_rv, a.rv_cos, a.rv_eha, a.timestamp);
         for (var i = 0, l = tempListeners.length; i < l; i++) {
             tempListeners[i].win(accel);
         }
@@ -96,7 +96,7 @@ var accelerometer = {
 
         if (cordova.platformId === "windowsphone") {
             exec(function (a) {
-                accel = new Acceleration(a.x, a.y, a.z, a.x_uc, a.y_uc, a.z_uc, a.x_la, a.y_la, a.z_la, a.x_rv, a.y_rv, a.z_rv, a.rv_cos, a.rv_eha, a.timestamp);
+                accel = new Acceleration(a.x, a.y, a.z, a.x_uc, a.y_uc, a.z_uc, a.x_ucb, a.y_ucb, a.z_ucb, a.x_la, a.y_la, a.z_la, a.x_rv, a.y_rv, a.z_rv, a.rv_cos, a.rv_eha, a.timestamp);
                 successCallback(accel);
             }, function (e) {
                 errorCallback(e);

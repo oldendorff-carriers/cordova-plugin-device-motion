@@ -50,7 +50,7 @@ public class AccelListener extends CordovaPlugin implements SensorEventListener 
     public static int ERROR_FAILED_TO_START = 3;
 
     private float x,y,z;                                // most recent acceleration values
-    private float x_uc,y_uc,z_uc;                       // most recent acceleration uncalibrated values
+    private float x_uc,y_uc,z_uc,x_ucb,y_ucb,z_ucb;     // most recent acceleration uncalibrated values
     private float x_la,y_la,z_la;                       // most recent linear acceleration values
     private float x_rv,y_rv,z_rv,rv_cos,rv_eha;         // most recent rotation vector values
 
@@ -299,6 +299,9 @@ public class AccelListener extends CordovaPlugin implements SensorEventListener 
                 this.x_uc = event.values[0];
                 this.y_uc = event.values[1];
                 this.z_uc = event.values[2];
+                this.x_ucb = event.values[3];
+                this.y_ucb = event.values[4];
+                this.z_ucb = event.values[5];
             } else if (event.sensor.getType() == Sensor.TYPE_LINEAR_ACCELERATION) {
                 this.x_la = event.values[0];
                 this.y_la = event.values[1];
@@ -359,6 +362,9 @@ public class AccelListener extends CordovaPlugin implements SensorEventListener 
             r.put("x_uc", this.x_uc);
             r.put("y_uc", this.y_uc);
             r.put("z_uc", this.z_uc);
+            r.put("x_ucb", this.x_ucb);
+            r.put("y_ucb", this.y_ucb);
+            r.put("z_ucb", this.z_ucb);
             r.put("x_la", this.x_la);
             r.put("y_la", this.y_la);
             r.put("z_la", this.z_la);
