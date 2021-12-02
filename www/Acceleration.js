@@ -19,11 +19,26 @@
  *
  */
 
-var Acceleration = function (x, y, z, timestamp) {
+
+var Acceleration = function(x, y, z, x_uc, y_uc, z_uc, x_ucb, y_ucb, z_ucb, x_la, y_la, z_la, x_rv, y_rv, z_rv, rv_cos, rv_eha, timestamp) {
     this.x = x;
     this.y = y;
     this.z = z;
-    this.timestamp = timestamp || new Date().getTime();
+    this.x_uc = x_uc;
+    this.y_uc = y_uc;
+    this.z_uc = z_uc;
+    this.x_ucb = x_ucb;
+    this.y_ucb = y_ucb;
+    this.z_ucb = z_ucb;
+    this.x_la = x_la;
+    this.y_la = y_la;
+    this.z_la = z_la;
+    this.x_rv = x_rv;
+    this.y_rv = y_rv;
+    this.z_rv = z_rv;
+    this.rv_cos = rv_cos;
+    this.rv_eha = rv_eha;
+    this.timestamp = timestamp || (new Date()).getTime();
 };
 
 module.exports = Acceleration;

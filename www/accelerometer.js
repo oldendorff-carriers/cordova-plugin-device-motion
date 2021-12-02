@@ -46,25 +46,19 @@ var accel = null;
 var eventTimerId = null;
 
 // Tells native to start.
-function start () {
-    exec(
-        function (a) {
-            var tempListeners = listeners.slice(0);
-            accel = new Acceleration(a.x, a.y, a.z, a.timestamp);
-            for (var i = 0, l = tempListeners.length; i < l; i++) {
-                tempListeners[i].win(accel);
-            }
-        },
-        function (e) {
-            var tempListeners = listeners.slice(0);
-            for (var i = 0, l = tempListeners.length; i < l; i++) {
-                tempListeners[i].fail(e);
-            }
-        },
-        'Accelerometer',
-        'start',
-        []
-    );
+function start() {
+    exec(function (a) {
+        var tempListeners = listeners.slice(0);
+        accel = new Acceleration(a.x, a.y, a.z, a.x_uc, a.y_uc, a.z_uc, a.x_ucb, a.y_ucb, a.z_ucb, a.x_la, a.y_la, a.z_la, a.x_rv, a.y_rv, a.z_rv, a.rv_cos, a.rv_eha, a.timestamp);
+        for (var i = 0, l = tempListeners.length; i < l; i++) {
+            tempListeners[i].win(accel);
+        }
+    }, function (e) {
+        var tempListeners = listeners.slice(0);
+        for (var i = 0, l = tempListeners.length; i < l; i++) {
+            tempListeners[i].fail(e);
+        }
+    }, "Accelerometer", "start", []);
     running = true;
 }
 
@@ -102,19 +96,13 @@ var accelerometer = {
     getCurrentAcceleration: function (successCallback, errorCallback, options) {
         argscheck.checkArgs('fFO', 'accelerometer.getCurrentAcceleration', arguments);
 
-        if (cordova.platformId === 'windowsphone') {
-            exec(
-                function (a) {
-                    accel = new Acceleration(a.x, a.y, a.z, a.timestamp);
-                    successCallback(accel);
-                },
-                function (e) {
-                    errorCallback(e);
-                },
-                'Accelerometer',
-                'getCurrentAcceleration',
-                []
-            );
+        if (cordova.platformId === "windowsphone") {
+            exec(function (a) {
+                accel = new Acceleration(a.x, a.y, a.z, a.x_uc, a.y_uc, a.z_uc, a.x_ucb, a.y_ucb, a.z_ucb, a.x_la, a.y_la, a.z_la, a.x_rv, a.y_rv, a.z_rv, a.rv_cos, a.rv_eha, a.timestamp);
+                successCallback(accel);
+            }, function (e) {
+                errorCallback(e);
+            }, "Accelerometer", "getCurrentAcceleration", []);
 
             return;
         }
