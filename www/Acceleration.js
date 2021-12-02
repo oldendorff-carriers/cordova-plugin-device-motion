@@ -17,7 +17,8 @@
  * specific language governing permissions and limitations
  * under the License.
  *
-*/
+ */
+
 
 var Acceleration = function(x, y, z, x_uc, y_uc, z_uc, x_ucb, y_ucb, z_ucb, x_la, y_la, z_la, x_rv, y_rv, z_rv, rv_cos, rv_eha, timestamp) {
     this.x = x;
